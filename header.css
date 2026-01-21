@@ -1,0 +1,48 @@
+.header {
+    height: 57px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    top:0px;
+    left:0px;
+    right: 0px;
+    align-items: center;
+
+}
+.left-section {
+    display:flex;
+    align-items: center;
+    width: 150px;
+}
+.Hamburger_icon {
+    width: 24px;
+}
+
+.brand-logo {
+    height: 65px;
+}
+
+.middle-section {
+padding-left: px;
+display:flex;
+align-items: center;
+max-width: 400px;
+flex: 1;
+}
+
+.search-icon {
+    width: 19px;
+    padding-top: 2px;
+    border-left: 0px;
+}
+.search-input {
+    height : 25px;
+    border-right: 0px;
+    border-radius: 3px;
+    margin-left: 50px;
+    width: 200px;
+}
+.cart-button {
+    width: 25px;
+    padding-right: 10px;
+}
