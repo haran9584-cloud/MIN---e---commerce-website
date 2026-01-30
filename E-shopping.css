@@ -1,0 +1,46 @@
+body {
+    font-family: Roboto;
+    margin-top: 0px;
+}
+
+.image-1 {
+width: 100%;
+}
+
+.listing-price {
+    font-size:15px;
+
+}
+
+.span-price {
+    font-weight: bold;
+}
+.listing-info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    
+}
+.product-button {
+    background-color: purple ;
+    color: white;   
+    border-radius: 10px;
+    padding: 6px 6px;
+    border: 0px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.listing-detail {  
+ box-sizing: border-box;    
+  padding: 20px 20px;
+ 
+}
+
+.product-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 20px; 
+}
+
+
+
