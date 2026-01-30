@@ -36,6 +36,24 @@ title: 'Men Printed Regular - Fi T - shirt',
 image: 'images/1000015813210-Blue-BLUE-1000015813210_01-2100.jpg"',
 price: 799,
 title: 'Men checked casual shirt - loose fit.'
+},
+{
+  id: "BDHKE78HJU",
+image: 'images/images-9.jpg"',
+price: 899,
+title: 'Men Brown casual shirt - loose fit.' 
+}, 
+{
+    id: "BDHKE78HJU",
+image: 'images/images-9.jpg"',
+price: 899,
+title: 'Men Brown casual shirt - loose fit.'
+},
+{
+    id: "BDHKE78HJU",
+image: 'images/images-9.jpg"',
+price: 899,
+title: 'Men Brown casual shirt - loose fit.'
 }];  
 
 let listingHTML = '';
@@ -47,17 +65,41 @@ Listing.forEach((Listing) => {
 <img class="image-1" src="${Listing.image}"> 
     </div>  
     <div class="listing-info-grid"> 
+    <div>
  <p class="listing-price"> 
      &#8377 <span class="span-price">${Listing.price}</span>   
     </p>  
     <p class="listing-title">       
         ${Listing.title}    
     </p>  
+    </div>
+
+<div>
+    <select class="quantity-selector  js-quantity-listener-${Listing.id}">
+    <option selected value="1">1</option>
+    <option  value="2">2</option>
+    <option  value="3">3</option>
+    <option  value="4">4</option>
+    <option  value="5">5</option>
+    <option  value="6">6</option>
+    <option  value="7">7</option>
+    <option  value="8">8</option>
+    <option  value="9">9</option>
+    <option  value="10">10</option>
+    </select>
+</div>
+
      <button class="product-button  js-click-cart"
-     data-listing-id = "${Listing.id}"
-          >   
+     data-listing-id = "${Listing.id}">   
         Add to cart   
-    </button>  
+    </button>
+    
+    <div class="adding-cart-dom js-added-DOM-${Listing.id}">
+    <p > </p>
+    </div>
+
+    <div class="cart-listing"></div>
+
     </div>  
     </div>`;    
 }) 
@@ -71,40 +113,71 @@ document.querySelector('.product-detail-grid')
 
         const listingId = button.dataset.listingId;
 
-        let matchingItem;
+             console.log('heybuddy');
 
-        cart.forEach((item)=> {
-if (listingId === item.listingId) {
+       let intervalID;
+
+   document.querySelector(`.js-added-DOM-${listingId}`).innerHTML = `✅Added`;
+
+   if (setTimeout(()=>{
+clearTimeout(intervalID);
+document.querySelector(`.js-added-DOM-${listingId}`).innerHTML= ``;
+   },1000));
+
+   else {
+    clearTimeout(intervalID);
+   }
+
+//getting quantity for this product
+
+ const selectElement = document.querySelector(`.js-quantity-listener-${listingId}`)
+
+        const selectValue = Number(selectElement.value);
+    
+        let matchingItem; 
+   
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+        cart.forEach((item)=> { 
+if (listingId === item.listingId) {  
     matchingItem = item;
-}
 
- });
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+}  
+
+ });  
 
 if (matchingItem) {
- matchingItem.quantity += 1;
-}
-
-else {
+ matchingItem.quantity += selectValue; 
+}  
+ 
+else { 
      cart.push ({
         listingId: listingId,
-        quantity: 1
-     });
-
-}
-
+        quantity: selectValue
+      }); 
+ 
+} 
+  
 let cartQuantity = 0; 
  
-cart.forEach((item)=> { 
+cart.forEach((item)=> {  
 cartQuantity += item.quantity; 
- 
+
 document.querySelector('.js-cartQuantity') 
-.innerHTML = cartQuantity; 
-  
-});
+.innerHTML = cartQuantity;  
+
+localStorage.setItem("cart", JSON.stringify(cart)); 
+}); 
+
+  document.querySelector('.cart-icon').addEventListener('click', ()=> { 
+    window.location.href = "cart.js";  
+}); 
  
-console.log(cartQuantity);   
-   
-     console.log(cart); 
+console.log(cartQuantity); 
+    
+     console.log(cart);       
     });
 
-});
+}); 

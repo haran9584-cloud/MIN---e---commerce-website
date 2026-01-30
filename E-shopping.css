@@ -42,5 +42,23 @@ width: 100%;
     column-gap: 20px; 
 }
 
+.quantity-selector {
+    width: 37px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    padding-top:6px 6px 6px 6px;
+    border-radius: 5px;
+}
+.Adding {
+    display:flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+.adding-cart-dom {
+    margin-top: 10px;
+    color: green;
+    margin-right: 10px;
+}
 
 
