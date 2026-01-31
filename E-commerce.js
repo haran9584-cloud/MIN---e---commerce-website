@@ -54,13 +54,20 @@ title: 'Men Brown casual shirt - loose fit.'
 image: 'images/images-9.jpg"',
 price: 899,
 title: 'Men Brown casual shirt - loose fit.'
-}];  
+}]; 
+
+import {cart} from '../cart.js';
+
 
 let listingHTML = '';
+
 
 Listing.forEach((Listing) => { 
   listingHTML = listingHTML + 
   `<div class="listing-detail">  
+
+      <div class="cart-listing"></div>
+
     <div class="div-image-1"> 
 <img class="image-1" src="${Listing.image}"> 
     </div>  
@@ -98,8 +105,6 @@ Listing.forEach((Listing) => {
     <p > </p>
     </div>
 
-    <div class="cart-listing"></div>
-
     </div>  
     </div>`;    
 }) 
@@ -135,14 +140,10 @@ document.querySelector(`.js-added-DOM-${listingId}`).innerHTML= ``;
         const selectValue = Number(selectElement.value);
     
         let matchingItem; 
-   
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    
+       
         cart.forEach((item)=> { 
 if (listingId === item.listingId) {  
     matchingItem = item;
-
-  localStorage.setItem("cart", JSON.stringify(cart));
 
 }  
 
@@ -161,23 +162,22 @@ else {
 } 
   
 let cartQuantity = 0; 
- 
-cart.forEach((item)=> {  
-cartQuantity += item.quantity; 
+  
+cart.forEach((item)=> {   
+cartQuantity += item.quantity;  
 
 document.querySelector('.js-cartQuantity') 
-.innerHTML = cartQuantity;  
+.innerHTML = cartQuantity;   
 
-localStorage.setItem("cart", JSON.stringify(cart)); 
-}); 
+});  
 
-  document.querySelector('.cart-icon').addEventListener('click', ()=> { 
-    window.location.href = "cart.js";  
-}); 
+  document.querySelector('.cart-icon').addEventListener('click', ()=> {  
+    window.location.href = "cart.js";   
+});   
  
-console.log(cartQuantity); 
-    
+console.log(cartQuantity);  
+      
      console.log(cart);       
-    });
+    }); 
 
 }); 
