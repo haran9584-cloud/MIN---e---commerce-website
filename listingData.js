@@ -1,8 +1,8 @@
  export const Listing = [{
     id: "BEBFL6G45F",
 image: 'images/1000015491114-Pink-PEACH-1000015491114_01-2100.jpg',
-price: 999,
-title: 'Men Printed Regular - Fi T - shirt',
+price: 997,
+title: 'Men Printed Regular - FiT - shirt',
 }, {
     id: "BHEHDLUY67",
     image: 'images/1000016225533-Blue-BLUE-1000016225533_01-2100.jpg',

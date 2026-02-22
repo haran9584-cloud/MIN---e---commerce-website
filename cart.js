@@ -4,7 +4,7 @@
     }, 
     {
         listingId: 'BHEHDLUY67',
-        quantity: 3
+        quantity: 4
     }]; 
 
 export function addCart (listingId, selectValue) {
