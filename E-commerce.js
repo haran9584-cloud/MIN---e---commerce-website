@@ -1,6 +1,6 @@
 //below we are saving the listing data which is called data structre.
 
-const Listing = [{
+ const Listing = [{
     id: "BEBFL6G45F",
 image: 'images/1000015491114-Pink-PEACH-1000015491114_01-2100.jpg',
 price: 999,
@@ -9,12 +9,12 @@ title: 'Men Printed Regular - Fi T - shirt',
     id: "BHEHDLUY67",
     image: 'images/1000016225533-Blue-BLUE-1000016225533_01-2100.jpg',
     price: 1199,
-    title: 'Men Printed Hauwei - Loose - FIT T - shirt',
+    title: 'Men Printed - Loose - FIT T - shirt',
 }, {
     id: "NHSIE67GHG",
     image: 'images/1000016303470-Red-RED-1000016303470_01-2100.jpg',
     price: 899,
-    title:  'Men checked Loose fit - T - shirtz'
+    title:  'Men checked Loose fit - T - shirtz',
 }, {
     id: "NHDBS678HY",
     image: 'images/1000016041042-Blue-BLUE-1000016041042_01-2100.jpg',
@@ -38,29 +38,27 @@ price: 799,
 title: 'Men checked casual shirt - loose fit.'
 },
 {
-  id: "BDHKE78HJU",
+  id: "BDHKE78HJS",
 image: 'images/images-9.jpg"',
 price: 899,
 title: 'Men Brown casual shirt - loose fit.' 
 }, 
 {
-    id: "BDHKE78HJU",
+    id: "BDHKE78HJM",
 image: 'images/images-9.jpg"',
 price: 899,
 title: 'Men Brown casual shirt - loose fit.'
 },
 {
-    id: "BDHKE78HJU",
+    id: "BDHKE78HJN",
 image: 'images/images-9.jpg"',
 price: 899,
 title: 'Men Brown casual shirt - loose fit.'
 }]; 
 
-import {cart} from '../cart.js';
-
+import {cart, addCart} from '../cart.js';
 
 let listingHTML = '';
-
 
 Listing.forEach((Listing) => { 
   listingHTML = listingHTML + 
@@ -104,7 +102,6 @@ Listing.forEach((Listing) => {
     <div class="adding-cart-dom js-added-DOM-${Listing.id}">
     <p > </p>
     </div>
-
     </div>  
     </div>`;    
 }) 
@@ -112,56 +109,8 @@ Listing.forEach((Listing) => {
 document.querySelector('.product-detail-grid')
 .innerHTML = listingHTML;
 
- document.querySelectorAll('.js-click-cart')
-.forEach((button)=> {
-    button.addEventListener('click', ()=> {
-
-        const listingId = button.dataset.listingId;
-
-             console.log('heybuddy');
-
-       let intervalID;
-
-   document.querySelector(`.js-added-DOM-${listingId}`).innerHTML = `✅Added`;
-
-   if (setTimeout(()=>{
-clearTimeout(intervalID);
-document.querySelector(`.js-added-DOM-${listingId}`).innerHTML= ``;
-   },1000));
-
-   else {
-    clearTimeout(intervalID);
-   }
-
-//getting quantity for this product
-
- const selectElement = document.querySelector(`.js-quantity-listener-${listingId}`)
-
-        const selectValue = Number(selectElement.value);
-    
-        let matchingItem; 
-       
-        cart.forEach((item)=> { 
-if (listingId === item.listingId) {  
-    matchingItem = item;
-
-}  
-
- });  
-
-if (matchingItem) {
- matchingItem.quantity += selectValue; 
-}  
- 
-else { 
-     cart.push ({
-        listingId: listingId,
-        quantity: selectValue
-      }); 
- 
-} 
-  
-let cartQuantity = 0; 
+function updateCartQuantity ( ) {
+    let cartQuantity = 0; 
   
 cart.forEach((item)=> {   
 cartQuantity += item.quantity;  
@@ -171,13 +120,42 @@ document.querySelector('.js-cartQuantity')
 
 });  
 
-  document.querySelector('.cart-icon').addEventListener('click', ()=> {  
-    window.location.href = "cart.js";   
-});   
- 
-console.log(cartQuantity);  
+console.log(cartQuantity);   
       
-     console.log(cart);       
-    }); 
+     console.log(cart); 
+}
 
+ document.querySelectorAll('.js-click-cart') 
+.forEach((button)=> { 
+    button.addEventListener('click', ()=> { 
+ 
+        const listingId = button.dataset.listingId;  
+
+             console.log('heybuddy'); 
+
+       let intervalID; 
+
+   document.querySelector(`.js-added-DOM-${listingId}`).innerHTML = `✅Added`; 
+
+   if (setTimeout(()=>{ 
+clearTimeout(intervalID); 
+document.querySelector(`.js-added-DOM-${listingId}`).innerHTML= ``; 
+   },1000)); 
+
+   else {  
+    clearTimeout(intervalID);   
+   }  
+
+//getting quantity for this product  
+
+ const selectElement = document.querySelector(`.js-quantity-listener-${listingId}`)
+
+        const selectValue = Number(selectElement.value);
+
+        addCart(listingId, selectValue);
+
+         updateCartQuantity(); 
+        
+    });  
+ 
 }); 
