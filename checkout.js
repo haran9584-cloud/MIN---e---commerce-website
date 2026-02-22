@@ -46,7 +46,7 @@ cartSummaryHTML += ` <div>
             </p>
                 <div class="delivery-option">  
                     <div class="delivery-color"> 
-                        <input type="radio" name="skill"> 
+                        <input type="radio" name="${matchinglisting.id}"> 
                 Tuesday, June 21, 
                     </div> 
                  <div> 
@@ -55,7 +55,7 @@ cartSummaryHTML += ` <div>
                 </div> 
                 <div class="delivery-option">
                     <div class="delivery-color">
-                  <input type="radio" name="skill">
+                  <input type="radio" name="${matchinglisting.id}">
                 Wednesday, June 15,
                     </div> 
                  <div> 
@@ -64,7 +64,7 @@ cartSummaryHTML += ` <div>
                 </div> 
                 <div class="delivery-option">
                     <div class="delivery-color">
-                         <input type="radio" name="skill">
+                         <input type="radio" name="${matchinglisting.id}">
                     Monday, June 13,
                     </div> 
                     <div>
