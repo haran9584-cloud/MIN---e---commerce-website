@@ -125,7 +125,7 @@ console.log(cartQuantity);
      console.log(cart); 
 }
 
- do  cument.querySelectorAll('.js-click-cart') 
+ document.querySelectorAll('.js-click-cart') 
 .forEach((button)=> { 
     button.addEventListener('click', ()=> { 
  
@@ -144,7 +144,7 @@ document.querySelector(`.js-added-DOM-${listingId}`).innerHTML= ``;
 
    else {  
     clearTimeout(intervalID);   
-   }
+   }  
 
 //getting quantity for this product  
 

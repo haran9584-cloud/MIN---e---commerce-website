@@ -19,7 +19,7 @@
             
         console.log(matchinglisting); 
             
-    cartSummaryHTML += ` <div>   
+    cartSummaryHTML += ` <div class="listing-box js-remove-container-${matchinglisting.id}">   
                         <div class="delivery-date"> 
                         Delivery date: Tuesday, June 21 
                         </div>  
@@ -86,15 +86,16 @@
     .forEach((link) => { 
         link.addEventListener('click', () => { 
         const listingId = link.dataset.listingId;  
-        
-        console.log("clicked ID:", listingId);  
-        console.log("Before Cart:", cart);  
 
-        RemoveFromCart(listingId);   
+        RemoveFromCart(listingId);
 
-        console.log("After cart:", cart); 
-        console.log(cart); 
+    const container = document.querySelector(
+            `.js-remove-container-${listingId}`
+            
+        ); 
+ 
+        container.remove();
 
         }); 
  
-    });
+    }); 

@@ -48,6 +48,4 @@ export function RemoveFromCart(listingId) {
 
     cart = RemoveCart;  
 
-    console.log("updated cart inside the function:", cart); 
-
 }
