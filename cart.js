@@ -1,4 +1,4 @@
-    export const cart = [{
+    export let cart = [{
         listingId: 'BEBFL6G45F',
         quantity: 2 
     }, 
@@ -31,3 +31,23 @@ export function addCart (listingId, selectValue) {
     } 
     }
 
+    //Here we are adding the listing which is not equal to the listingId which,
+//automatically make the clicked listing to be removed from the cart.
+
+export function RemoveFromCart(listingId) {  
+ 
+    const RemoveCart = [];
+
+    cart.forEach((cartitem) => { 
+        if(cartitem.listingId !== listingId) { 
+            RemoveCart.push(cartitem);           
+                                    
+        } 
+
+    });   
+
+    cart = RemoveCart;  
+
+    console.log("updated cart inside the function:", cart); 
+
+}

@@ -62,7 +62,7 @@ let listingHTML = '';
 
 Listing.forEach((Listing) => { 
   listingHTML = listingHTML + 
-  `<div class="listing-detail">  
+  `<div class="listing-detail">     
 
       <div class="cart-listing"></div>
 
@@ -110,9 +110,9 @@ document.querySelector('.product-detail-grid')
 .innerHTML = listingHTML;
 
 function updateCartQuantity ( ) {
-    let cartQuantity = 0; 
-  
-cart.forEach((item)=> {   
+        let cartQuantity = 0; 
+    
+    cart.forEach((item)=> {   
 cartQuantity += item.quantity;  
 
 document.querySelector('.js-cartQuantity') 
@@ -125,7 +125,7 @@ console.log(cartQuantity);
      console.log(cart); 
 }
 
- document.querySelectorAll('.js-click-cart') 
+ do  cument.querySelectorAll('.js-click-cart') 
 .forEach((button)=> { 
     button.addEventListener('click', ()=> { 
  
@@ -144,7 +144,7 @@ document.querySelector(`.js-added-DOM-${listingId}`).innerHTML= ``;
 
    else {  
     clearTimeout(intervalID);   
-   }  
+   }
 
 //getting quantity for this product  
 
@@ -154,7 +154,7 @@ document.querySelector(`.js-added-DOM-${listingId}`).innerHTML= ``;
 
         addCart(listingId, selectValue);
 
-         updateCartQuantity(); 
+         updateCartQuantity();  
         
     });  
  
