@@ -14,7 +14,7 @@ title: 'Men Printed Regular - Fi T - shirt',
     id: "NHSIE67GHG",
     image: 'images/1000016303470-Red-RED-1000016303470_01-2100.jpg',
     price: 899,
-    title:  'Men checked Loose fit - T - shirtz',
+    title:  'Men checked Loose fit - T - shirtz'
 }, {
     id: "NHDBS678HY",
     image: 'images/1000016041042-Blue-BLUE-1000016041042_01-2100.jpg',
@@ -56,7 +56,7 @@ price: 899,
 title: 'Men Brown casual shirt - loose fit.'
 }]; 
 
-import {cart, addCart} from '../cart.js';
+import {cart, addCart } from '../cart.js';
 
 let listingHTML = '';
 
@@ -107,9 +107,9 @@ Listing.forEach((Listing) => {
 }) 
 
 document.querySelector('.product-detail-grid')
-.innerHTML = listingHTML;
+.innerHTML = listingHTML;  
 
-function updateCartQuantity ( ) {
+function updateCartQuantity ( ) {   
         let cartQuantity = 0; 
     
     cart.forEach((item)=> {   
