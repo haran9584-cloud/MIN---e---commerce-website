@@ -1,7 +1,14 @@
     import { cart, RemoveFromCart } from "./cart.js"; 
-    import { Listing } from "./listingData.js"; 
+    import { Listing } from "./data-folder/listingData.js";
+    import dayjs from 'https://esm.sh/dayjs@1.11.10';  
+    import { deliveryOptions } from "./data-folder/delivery-options.js"; 
 
-    let cartSummaryHTML = ''; 
+const today =  dayjs();
+const deliveryDate = today.add(7, 'days');
+console.log(deliveryDate.format('dddd, MMMM D'));
+
+
+    let cartSummaryHTML = '';   
         
     //We are generating the HTML and looping through every listing.         
     cart.forEach((cartitem) => {   
@@ -18,10 +25,26 @@
         });  
             
         console.log(matchinglisting); 
-            
-    cartSummaryHTML += ` <div class="listing-box js-remove-container-${matchinglisting.id}">   
+
+        const deliveryOption = cartitem.deliveryOptionsId;
+
+        let deliveryOptionn;
+
+      deliveryOptions.forEach((option) => {
+        if (option.id === deliveryOption) {
+        deliveryOptionn = option
+        };
+      });   
+
+       const today = dayjs();
+            const deliveryDate = today.add(deliveryOptionn.deliveryDays, 'day');
+            const dateString = deliveryDate.format('dddd, MMMM D');
+
+    cartSummaryHTML += `
+
+    <div class="listing-box js-remove-container-${matchinglisting.id}">   
                         <div class="delivery-date"> 
-                        Delivery date: Tuesday, June 21 
+                        Delivery date: ${dateString}
                         </div>  
 
     <div class="listing-data">  
@@ -45,32 +68,7 @@
                 <p class="delivery-title">
                     Choose a delivery option 
                 </p>
-                    <div class="delivery-option">  
-                        <div class="delivery-color">  
-                            <input type="radio" name="${matchinglisting.id}"> 
-                    Tuesday, June 21, 
-                        </div> 
-                    <div> 
-                    <span class="span-price"> Free shipping </span>
-                        </div> 
-                    </div> 
-                    <div class="delivery-option">
-                        <div class="delivery-color">
-                    <input type="radio" name="${matchinglisting.id}">
-                    Wednesday, June 15,
-                        </div> 
-                    <div> 
-                    <span class="span-price"> Rs: 80 - shipping </span>
-                        </div>    
-                    </div> 
-                    <div class="delivery-option">
-                        <div class="delivery-color">
-                            <input type="radio" name="${matchinglisting.id}">
-                        Monday, June 13,
-                        </div> 
-                        <div>
-                    <span class="span-price"> Rs: 120 - shipping </span>
-                            </div>
+                   ${deliveryOptionsHTML(matchinglisting, cartitem)}
                         </div>
                         </div>
                     </div> 
@@ -79,14 +77,47 @@
         `;
     }); 
 
+    function deliveryOptionsHTML(matchinglisting, cartitem) {
+
+        let html = '';
+
+        deliveryOptions.forEach((deliveryOption) => {
+
+            const today = dayjs();
+            const deliveryDate = today.add(deliveryOption.deliveryDays, 'day');
+            const dateString = deliveryDate.format('dddd, MMMM D');
+
+            const priceString = deliveryOption.price === 0
+            ? 'Free' 
+            :deliveryOption.price; 
+            
+            const isChecked = deliveryOption.id === cartitem.deliveryOptions;
+               
+          html+=  `<div class="delivery-option">  
+                     <div class="delivery-color">  
+                    <input type="radio" 
+                   ${isChecked ? 'checked' :''} 
+                    name="${matchinglisting.id}"> 
+                    ${dateString}
+                        </div> 
+                    <div> 
+                    <span class="span-price"> "RS : ${priceString}" </span>
+                        </div>  
+                    </div>`
+        }); 
+
+              return html;  
+
+    }
+
          document.querySelector('.js-listing-checkout') 
     .innerHTML = cartSummaryHTML; 
 
     document.querySelectorAll('.js-remove-link') 
     .forEach((link) => { 
         link.addEventListener('click', () => { 
-        const listingId = link.dataset.listingId;  
-
+        const listingId = link.dataset.listingId; 
+        
         RemoveFromCart(listingId);
 
     const container = document.querySelector(
@@ -96,6 +127,22 @@
  
         container.remove();
 
-        }); 
- 
-    }); 
+        });
+
+    });   
+
+                let cartQuantity = 0; 
+        
+        cart.forEach((item)=> {   
+    cartQuantity += item.quantity;   
+        });  
+
+document.querySelector('.js-checkout-quantity')
+.innerHTML = `Checkout (${cartQuantity} items)`;
+
+document.querySelector('.brand-logo')
+.addEventListener('click', () => {
+window.location.href = "E-shopping.html"
+});  
+
+    console.log(dayjs);

@@ -1,6 +1,6 @@
 //below we are saving the listing data which is called data structre.
 
- const Listing = [{
+    export const Listing = [{
     id: "BEBFL6G45F",
 image: 'images/1000015491114-Pink-PEACH-1000015491114_01-2100.jpg',
 price: 999,
@@ -157,5 +157,10 @@ document.querySelector(`.js-added-DOM-${listingId}`).innerHTML= ``;
          updateCartQuantity();  
         
     });  
+
+    document.querySelector('.cart-icon')
+    .addEventListener('click', () => {
+        window.location.href = "checkout.html";
+    });
  
 }); 

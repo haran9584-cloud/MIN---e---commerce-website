@@ -31,9 +31,9 @@ title: 'Men Printed Regular - FiT - shirt',
 }, 
 {
     id: "BDHKE678SD",
-image: 'images/1000015813210-Blue-BLUE-1000015813210_01-2100.jpg"',
-price: 799,
-title: 'Men checked casual shirt - loose fit.'
+ image: 'images/1000015813210-Blue-BLUE-1000015813210_01-2100.jpg"',
+ price: 799,
+ title: 'Men checked casual shirt - loose fit.'
 },
 {
   id: "BDHKE78HJS",

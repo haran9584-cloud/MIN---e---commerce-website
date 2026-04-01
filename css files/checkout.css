@@ -1,6 +1,5 @@
 body {
     font-family: Roboto; 
-    margin-top: 70px;
 } 
 
 .Checkout-images { 
@@ -55,7 +54,7 @@ body {
 }
 
 .product-update {
-    color: green; 
+    color: purple; 
     cursor : pointer; 
 }
 
@@ -76,7 +75,7 @@ body {
     margin-bottom: 10px;
     font-weight: bold;
     font-size: 18px;
-    color: green;
+    color:purple;
 }
 
 .order-summary {
@@ -117,7 +116,7 @@ body {
 
 .delivery-color  { 
     font-weight: bold; 
-    color: green; 
+    color:purple; 
 }
 
 .span-price {
@@ -141,6 +140,28 @@ body {
 .product-remove {
     cursor: pointer;
 }
+
+.brand-logo {
+    height: 80px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.checkout-header {
+    display: flex;
+    align-items: center;
+}
+
+.checkout-quantity {
+    margin-left: 300px;
+    font-weight: bold;
+    color: black;
+}
+
+
+
+
+
 
 
 
