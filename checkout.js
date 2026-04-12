@@ -1,4 +1,4 @@
-    import { cart, RemoveFromCart } from "./cart.js"; 
+    import { cart, RemoveFromCart, updateDeliveryDate } from "./cart.js"; 
     import { Listing } from "./data-folder/listingData.js";
     import dayjs from 'https://esm.sh/dayjs@1.11.10';  
     import { deliveryOptions } from "./data-folder/delivery-options.js"; 
@@ -6,7 +6,6 @@
 const today =  dayjs();
 const deliveryDate = today.add(7, 'days');
 console.log(deliveryDate.format('dddd, MMMM D'));
-
 
     let cartSummaryHTML = '';   
         
@@ -93,7 +92,10 @@ console.log(deliveryDate.format('dddd, MMMM D'));
             
             const isChecked = deliveryOption.id === cartitem.deliveryOptions;
                
-          html+=  `<div class="delivery-option">  
+          html+=  `<div class="delivery-option js-deliveryOption"
+                 data-listing-id="${matchinglisting.id}";
+                 data-delivery-option-id="${deliveryOption.id}";
+                    >  
                      <div class="delivery-color">  
                     <input type="radio" 
                    ${isChecked ? 'checked' :''} 
@@ -107,7 +109,6 @@ console.log(deliveryDate.format('dddd, MMMM D'));
         }); 
 
               return html;  
-
     }
 
          document.querySelector('.js-listing-checkout') 
@@ -145,4 +146,12 @@ document.querySelector('.brand-logo')
 window.location.href = "E-shopping.html"
 });  
 
-    console.log(dayjs);
+  // using shorthand property for getting the dataset from the data attribute.
+            //instead of using  const  listingId = element.dataset.listingId.
+
+    document.querySelectorAll('.js-deliveryOption').forEach((element) => {
+        element.addEventListener('click', ()=> {
+            const {listingId, deliveryOptionId} = element.dataset;
+            updateDeliveryDate(listingId, deliveryOptionId);
+        });  
+    });        

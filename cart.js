@@ -67,7 +67,7 @@ export function RemoveFromCart(listingId) {
                                     
         }   
 
-    });   
+    }); 
 
     cart = RemoveCart;   
 
@@ -75,5 +75,20 @@ export function RemoveFromCart(listingId) {
 
     cartStorage();  
  
-}  
-  
+}
+
+export function updateDeliveryDate (listingId, deliveryOptionsId)  {
+
+     let matchingItem; 
+
+     cart.forEach((cartItem) =>{
+if (listingId === cartItem.listingId) {
+matchingItem = cartItem;
+}
+ });
+
+matchingItem.deliveryOptionsId = deliveryOptionsId;
+
+cartStorage(); 
+
+};
