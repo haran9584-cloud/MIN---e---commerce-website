@@ -7,6 +7,10 @@ const today =  dayjs();
 const deliveryDate = today.add(7, 'days');
 console.log(deliveryDate.format('dddd, MMMM D'));
 
+
+function renderDate()  {
+
+
     let cartSummaryHTML = '';   
         
     //We are generating the HTML and looping through every listing.         
@@ -93,8 +97,8 @@ console.log(deliveryDate.format('dddd, MMMM D'));
             const isChecked = deliveryOption.id === cartitem.deliveryOptions;
                
           html+=  `<div class="delivery-option js-deliveryOption"
-                 data-listing-id="${matchinglisting.id}";
-                 data-delivery-option-id="${deliveryOption.id}";
+                 data-listing-id="${matchinglisting.id}"
+                 data-delivery-option-id="${deliveryOption.id}"
                     >  
                      <div class="delivery-color">  
                     <input type="radio" 
@@ -153,5 +157,11 @@ window.location.href = "E-shopping.html"
         element.addEventListener('click', ()=> {
             const {listingId, deliveryOptionId} = element.dataset;
             updateDeliveryDate(listingId, deliveryOptionId);
-        });  
-    });        
+                renderDate();
+        });    
+
+    });    
+    
+};    
+
+renderDate();       
