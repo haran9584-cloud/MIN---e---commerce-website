@@ -103,6 +103,7 @@ Listing.forEach((Listing) => {
     <p > </p>
     </div>
     </div>  
+    
     </div>`;    
 }) 
 

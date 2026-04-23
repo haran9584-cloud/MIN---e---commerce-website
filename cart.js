@@ -47,7 +47,7 @@ export function addCart (listingId, selectValue) {
             listingId: listingId, 
             quantity: selectValue,
          deliveryOptionsId: '1'
-        }); 
+        });
     } 
 //Setting the localstorage while adding the value in the cart.
 cartStorage();
@@ -69,6 +69,7 @@ export function RemoveFromCart(listingId) {
 
     }); 
 
+    
     cart = RemoveCart;   
 
 //Setting the localstorage while removing the listing from the cart.   

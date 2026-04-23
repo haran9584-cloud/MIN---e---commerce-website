@@ -1,15 +1,13 @@
     import { cart, RemoveFromCart, updateDeliveryDate } from "../cart.js"; 
-    import { Listing } from "../data-folder/listingData.js";
     import dayjs from 'https://esm.sh/dayjs@1.11.10';
-    import { deliveryOptions } from "../data-folder/delivery-options.js"; 
+    import { deliveryOptions } from "../data-folder/delivery-options.js";
+    import { getProduct } from "../data-folder/listingData.js";
 
-const today =  dayjs();
+const today =  dayjs();     
 const deliveryDate = today.add(7, 'days');
 console.log(deliveryDate.format('dddd, MMMM D'));
 
-
 export function renderDate()  {
-
 
     let cartSummaryHTML = '';   
         
@@ -18,15 +16,7 @@ export function renderDate()  {
 
         const listingId = cartitem.listingId;  
 
-        let matchinglisting;  
-
-        Listing.forEach((Listings) => { 
-            if (Listings.id === listingId) {   
-                matchinglisting = Listings 
-            } 
-            
-        });     
-            
+         const matchinglisting = getProduct(listingId);
         console.log(matchinglisting); 
 
         const deliveryOption = cartitem.deliveryOptionsId;
@@ -44,6 +34,7 @@ export function renderDate()  {
             const dateString = deliveryDate.format('dddd, MMMM D');
 
     cartSummaryHTML += `
+
 
     <div class="listing-box js-remove-container-${matchinglisting.id}">   
                         <div class="delivery-date"> 
@@ -74,9 +65,9 @@ export function renderDate()  {
                    ${deliveryOptionsHTML(matchinglisting, cartitem)}
                         </div>
                         </div>
-                    </div> 
+                    </div>  
                 </div>
-                </div>
+                </div>                         
         `;
     }); 
 
@@ -94,11 +85,11 @@ export function renderDate()  {
             ? 'Free' 
             :deliveryOption.price; 
             
-            const isChecked = deliveryOption.id === cartitem.deliveryOptions;
+            const isChecked = deliveryOption.id === cartitem.deliveryOptionsId;
                
           html+=  `<div class="delivery-option js-deliveryOption"
                  data-listing-id="${matchinglisting.id}"
-                 data-delivery-option-id="${deliveryOption.id}"
+             data-delivery-option-id="${deliveryOption.id}"
                     >  
                      <div class="delivery-color">  
                     <input type="radio" 
@@ -123,7 +114,7 @@ export function renderDate()  {
         link.addEventListener('click', () => { 
         const listingId = link.dataset.listingId; 
         
-        RemoveFromCart(listingId);
+        RemoveFromCart(listingId);   
 
     const container = document.querySelector(
             `.js-remove-container-${listingId}`
@@ -144,7 +135,7 @@ export function renderDate()  {
 
 document.querySelector('.js-checkout-quantity')
 .innerHTML = `Checkout (${cartQuantity} items)`;
-
+  
 document.querySelector('.brand-logo')
 .addEventListener('click', () => {
 window.location.href = "E-shopping.html"
@@ -158,9 +149,9 @@ window.location.href = "E-shopping.html"
             const {listingId, deliveryOptionId} = element.dataset;
             updateDeliveryDate(listingId, deliveryOptionId);
                 renderDate();
-        });    
+        });                                                 
 
-    });    
+    });                                                        
     
-};    
+};                                                             
 

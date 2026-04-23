@@ -1,3 +1,17 @@
+export function getProduct(listingId) {       
+       let matchinglisting;  
+
+            Listing.forEach((Listings) => { 
+                if (Listings.id === listingId) {   
+                    matchinglisting = Listings 
+                } 
+                
+            });  
+
+            return matchinglisting;
+        };
+
+ 
  export const Listing = [{
     id: "BEBFL6G45F",
 image: 'images/1000015491114-Pink-PEACH-1000015491114_01-2100.jpg',
