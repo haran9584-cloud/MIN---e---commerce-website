@@ -2,6 +2,7 @@
     import dayjs from 'https://esm.sh/dayjs@1.11.10';
     import { deliveryOptions } from "../data-folder/delivery-options.js";
     import { getProduct } from "../data-folder/listingData.js";
+import { renderPaymentSummary } from "./PaymentSummary.js";
 
 const today =  dayjs();     
 const deliveryDate = today.add(7, 'days');
@@ -97,7 +98,7 @@ export function renderDate()  {
                     name="${matchinglisting.id}"> 
                     ${dateString}
                         </div> 
-                    <div> 
+                    <div>  
                     <span class="span-price"> "RS : ${priceString}" </span>
                         </div>  
                     </div>`
@@ -109,6 +110,7 @@ export function renderDate()  {
          document.querySelector('.js-listing-checkout') 
     .innerHTML = cartSummaryHTML; 
 
+    
     document.querySelectorAll('.js-remove-link') 
     .forEach((link) => { 
         link.addEventListener('click', () => { 
@@ -127,7 +129,7 @@ export function renderDate()  {
 
     });   
 
-                let cartQuantity = 0; 
+    let cartQuantity = 0; 
         
         cart.forEach((item)=> {   
     cartQuantity += item.quantity;   
@@ -149,6 +151,8 @@ window.location.href = "E-shopping.html"
             const {listingId, deliveryOptionId} = element.dataset;
             updateDeliveryDate(listingId, deliveryOptionId);
                 renderDate();
+                renderPaymentSummary();
+
         });                                                 
 
     });                                                        

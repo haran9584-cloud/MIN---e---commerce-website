@@ -16,14 +16,21 @@ console.log(ProductPriceRupees);
 
 deliveryOptions.forEach((Option) => {
     if (Option.id === cartItem.deliveryOptionsId) {
-        deliveryTotal = Option.price;
+        deliveryTotal += Option.price;
     }
 });
 
-const subtotal = ProductPriceRupees + deliveryTotal;
-const tax = subtotal * 0.18;
-const finaltotal = subtotal + tax;
+const subtotal = ProductPriceRupees;
+const shippingcost = deliveryTotal;
+const totalBeforeTax = subtotal + shippingcost;
+const tax = totalBeforeTax * 0.18;
+const finaltotal = totalBeforeTax + tax;
 
+let cartQuantity = 0; 
+        
+        cart.forEach((item)=> {   
+    cartQuantity += item.quantity;   
+        });  
 
 document.querySelector('.js-order-summary')
 .innerHTML =  ` <div class="payment-block">
@@ -32,19 +39,18 @@ document.querySelector('.js-order-summary')
 
         <div class="payment-summary">
             <div>
-           items(3) :   
+           items(${cartQuantity}) :   
             </div>
             <div class="order-result">
-               Rs : 2398    
+               Rs : ${subtotal.toLocaleString('en-IN')}
             </div>
-            </div>
-
+       </div>   
             <div class="payment-summary">
            <div>
-         Shipping & handling :
+         Shipping & handling : 
            </div>
            <div class="order-result">
-            Rs : 50
+            Rs : ${shippingcost.toLocaleString('en-IN')}
            </div>
            </div>
 
@@ -53,7 +59,7 @@ document.querySelector('.js-order-summary')
             Total before Tax : 
            </div>
            <div class="order-result">
-            Rs: 2398
+            Rs: ${totalBeforeTax.toLocaleString('en-IN')}
            </div>
            </div>
 
@@ -62,7 +68,7 @@ document.querySelector('.js-order-summary')
         Estimated Tax : 
         </div>
         <div class="order-result">
-        Rs: 10
+        Rs : ${Math.round(tax).toLocaleString('en-IN')}
         </div>
 </div>
         <div class="payment-summary payment-summary-border">
@@ -70,15 +76,17 @@ document.querySelector('.js-order-summary')
    Order total : 
             </div> 
             <div class="order-result">
-Rs : 2458
+Rs : ${Math.round(finaltotal).toLocaleString('en-IN')}
             </div>
 <button class="order-button"> 
     Place your order
 </button>
-
         </div>  `
 
 }); 
 
 }; 
+
+
+
 
