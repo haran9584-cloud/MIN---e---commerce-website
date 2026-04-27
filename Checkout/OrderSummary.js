@@ -2,7 +2,7 @@
     import dayjs from 'https://esm.sh/dayjs@1.11.10';
     import { deliveryOptions } from "../data-folder/delivery-options.js";
     import { getProduct } from "../data-folder/listingData.js";
-import { renderPaymentSummary } from "./PaymentSummary.js";
+    import { renderPaymentSummary } from "./PaymentSummary.js";
 
 const today =  dayjs();     
 const deliveryDate = today.add(7, 'days');

@@ -10,7 +10,6 @@ export function getProduct(listingId) {
 
             return matchinglisting;
         };
-
  
  export const Listing = [{
     id: "BEBFL6G45F",
@@ -26,7 +25,7 @@ title: 'Men Printed Regular - FiT - shirt',
     id: "NHSIE67GHG",
     image: 'images/1000016303470-Red-RED-1000016303470_01-2100.jpg',
     price: 899,
-    title:  'Men checked Loose fit - T - shirtz',
+    title:  'Men checked Loose fit - T - shirt',
 }, {
     id: "NHDBS678HY",
     image: 'images/1000016041042-Blue-BLUE-1000016041042_01-2100.jpg',

@@ -103,6 +103,7 @@ body {
 .order-result {
     text-align: right;
     margin-left: 50px;
+    font-weight: bold;
 }
 
 .delivery-option {
@@ -158,8 +159,9 @@ body {
     color: black;
 }
 
-
-
+.order-total {
+  font-weight: bold;
+}
 
 
 

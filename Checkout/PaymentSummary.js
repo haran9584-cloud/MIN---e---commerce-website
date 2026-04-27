@@ -2,7 +2,6 @@ import { cart } from "../cart.js";
 import { deliveryOptions } from "../data-folder/delivery-options.js";
 import { getProduct } from "../data-folder/listingData.js";
 
-
 export function renderPaymentSummary() {
 
     let ProductPriceRupees = 0;
@@ -11,8 +10,6 @@ let deliveryTotal = 0;
 cart.forEach((cartItem)=> {
 const Product = getProduct(cartItem.listingId);
 ProductPriceRupees = ProductPriceRupees + Product.price * cartItem.quantity;
-
-console.log(ProductPriceRupees);
 
 deliveryOptions.forEach((Option) => {
     if (Option.id === cartItem.deliveryOptionsId) {
@@ -73,10 +70,10 @@ document.querySelector('.js-order-summary')
 </div>
         <div class="payment-summary payment-summary-border">
             <div>
-   Order total : 
+    Order total : 
             </div> 
             <div class="order-result">
-Rs : ${Math.round(finaltotal).toLocaleString('en-IN')}
+ Rs : ${Math.round(finaltotal).toLocaleString('en-IN')}
             </div>
 <button class="order-button"> 
     Place your order
