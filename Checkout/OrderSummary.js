@@ -1,4 +1,4 @@
-    import { cart, RemoveFromCart, updateDeliveryDate } from "../cart.js"; 
+    import { cart, RemoveFromCart, updateDeliveryDate} from "../cart.js"; 
     import dayjs from 'https://esm.sh/dayjs@1.11.10';
     import { deliveryOptions } from "../data-folder/delivery-options.js";
     import { getProduct } from "../data-folder/listingData.js";
@@ -66,9 +66,8 @@ export function renderDate()  {
                    ${deliveryOptionsHTML(matchinglisting, cartitem)}
                         </div>
                         </div>
-                    </div>  
-                </div>
-                </div>                         
+                        </div>
+                                     
         `;
     }); 
 

@@ -2,14 +2,22 @@ import { cart } from "../cart.js";
 import { deliveryOptions } from "../data-folder/delivery-options.js";
 import { getProduct } from "../data-folder/listingData.js";
 
+
 export function renderPaymentSummary() {
 
-    let ProductPriceRupees = 0;
+ let ProductPriceRupees = 0;
+
 let deliveryTotal = 0;
 
 cart.forEach((cartItem)=> {
-const Product = getProduct(cartItem.listingId);
-ProductPriceRupees = ProductPriceRupees + Product.price * cartItem.quantity;
+  const Product = getProduct(cartItem.listingId);
+ ProductPriceRupees = ProductPriceRupees + Product.price * cartItem.quantity;
+
+ console.log('cartItem;',  cartItem);
+ console.log('product:', Product);
+ console.log('product Price:', Product.price);
+ console.log('cartItem Quantity', cartItem.quantity);
+
 
 deliveryOptions.forEach((Option) => {
     if (Option.id === cartItem.deliveryOptionsId) {

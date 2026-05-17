@@ -1,7 +1,13 @@
     //Using localStorge to get the value from the cart in the array from, 
    //so we used JSON.parse.
-   
-   export let cart =JSON.parse(localStorage.getItem('cart'));
+      
+  export let cart;
+
+  loadStorage();
+
+ export function loadStorage() {
+
+cart = JSON.parse(localStorage.getItem('cart'));
     
     if (!cart) {    
 
@@ -16,8 +22,12 @@ cart = [{
         deliveryOptionsId: '2'
     }]; 
 
-    };
-    
+    }; 
+
+};
+
+
+
 //Function to set the localStorage.
 export function cartStorage() {
 
@@ -27,7 +37,6 @@ export function cartStorage() {
 
 //Adding listing to the cart and exporting
 export function addCart (listingId, selectValue) {
-        
                 let matchingItem; 
         
             cart.forEach((item)=> { 
@@ -44,8 +53,8 @@ export function addCart (listingId, selectValue) {
     
     else {  
         cart.push ({  
-            listingId: listingId, 
-            quantity: selectValue,
+         listingId: listingId,
+         quantity: selectValue,
          deliveryOptionsId: '1'
         });
     } 
@@ -69,7 +78,6 @@ export function RemoveFromCart(listingId) {
 
     }); 
 
-    
     cart = RemoveCart;   
 
 //Setting the localstorage while removing the listing from the cart.   

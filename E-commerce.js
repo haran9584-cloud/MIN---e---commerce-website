@@ -120,8 +120,6 @@ document.querySelector('.js-cartQuantity')
 .innerHTML = cartQuantity;   
 
 });  
-
-console.log(cartQuantity);   
       
      console.log(cart); 
 }
@@ -146,8 +144,8 @@ document.querySelector(`.js-added-DOM-${listingId}`).innerHTML= ``;
    else {  
     clearTimeout(intervalID);   
    }  
-
 //getting quantity for this product  
+
 
  const selectElement = document.querySelector(`.js-quantity-listener-${listingId}`)
 
