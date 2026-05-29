@@ -37,7 +37,9 @@ export function renderDate()  {
     cartSummaryHTML += `
 
 
-    <div class="listing-box js-remove-container-${matchinglisting.id}">   
+    <div class="listing-box 
+    js-item-container
+    js-remove-container-${matchinglisting.id}">   
                         <div class="delivery-date"> 
                         Delivery date: ${dateString}
                         </div>  
@@ -53,7 +55,9 @@ export function renderDate()  {
         <div class="product-price">
         "${matchinglisting.price}"
         </div>  
-        <div class="product-quantity">  
+        <div class="product-quantity
+        js-product-quantity-${matchinglisting.id}
+        ">  
             "${cartitem.quantity}" <span class="product-update">update</span> 
         <span class="product-remove js-remove-link"  data-listing-id= "${matchinglisting.id}" >Delete</span>
         </div>
@@ -107,9 +111,8 @@ export function renderDate()  {
     }
 
          document.querySelector('.js-listing-checkout') 
-    .innerHTML = cartSummaryHTML; 
+    .innerHTML = cartSummaryHTML;
 
-    
     document.querySelectorAll('.js-remove-link') 
     .forEach((link) => { 
         link.addEventListener('click', () => { 
@@ -138,7 +141,7 @@ document.querySelector('.js-checkout-quantity')
 .innerHTML = `Checkout (${cartQuantity} items)`;
   
 document.querySelector('.brand-logo')
-.addEventListener('click', () => {
+.addEventListener('click', () => {  
 window.location.href = "E-shopping.html"
 });  
 

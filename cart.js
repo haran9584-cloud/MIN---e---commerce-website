@@ -26,8 +26,6 @@ cart = [{
 
 };
 
-
-
 //Function to set the localStorage.
 export function cartStorage() {
 

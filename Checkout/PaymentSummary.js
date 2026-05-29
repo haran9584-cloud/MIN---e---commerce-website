@@ -2,7 +2,6 @@ import { cart } from "../cart.js";
 import { deliveryOptions } from "../data-folder/delivery-options.js";
 import { getProduct } from "../data-folder/listingData.js";
 
-
 export function renderPaymentSummary() {
 
  let ProductPriceRupees = 0;

@@ -1,4 +1,4 @@
-  import { addCart, loadStorage, cart } from "../cart.js";
+ import { addCart, loadStorage, cart } from "../cart.js";
 
  describe('test suit: addCart', () => {
 
@@ -34,7 +34,6 @@ listingId: 'BEBFL6G45F',
   deliveryOptionId:'1'       
 
       }]);
-
   });
 
   loadStorage();
@@ -43,6 +42,8 @@ addCart('BEBFL6G45F', 1);
     expect(cart.length).toEqual(1); 
     expect(cart[0].listingId).toEqual('BEBFL6G45F'); 
     expect(cart[0].quantity).toEqual(2); 
-  });
 
-});  
+  }); 
+
+});
+
