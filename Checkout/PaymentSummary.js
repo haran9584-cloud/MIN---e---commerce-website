@@ -17,7 +17,6 @@ cart.forEach((cartItem)=> {
  console.log('product Price:', Product.price);
  console.log('cartItem Quantity', cartItem.quantity);
 
-
 deliveryOptions.forEach((Option) => {
     if (Option.id === cartItem.deliveryOptionsId) {
         deliveryTotal += Option.price;
