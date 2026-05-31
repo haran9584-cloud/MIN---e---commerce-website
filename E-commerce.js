@@ -57,11 +57,16 @@ title: 'Men Brown casual shirt - loose fit.'
 }]; 
 
 import {cart, addCart } from '../cart.js';
+import {Listing} from'../data-folder/listingData.js';
+
+
 
 let listingHTML = '';
 
 Listing.forEach((Listing) => { 
   listingHTML = listingHTML + 
+
+  
   `<div class="listing-detail">     
 
       <div class="cart-listing"></div>

@@ -10,7 +10,8 @@ export function getProduct(listingId) {
 
             return matchinglisting;
         };
- 
+
+
  export const Listing = [{
     id: "BEBFL6G45F",
 image: 'images/1000015491114-Pink-PEACH-1000015491114_01-2100.jpg',
@@ -65,4 +66,5 @@ title: 'Men Brown casual shirt - loose fit.'
 image: 'images/images-9.jpg"',
 price: 899,
 title: 'Men Brown casual shirt - loose fit.'
-}]; 
+}];
+
