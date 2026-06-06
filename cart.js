@@ -37,7 +37,7 @@ export function cartStorage() {
 export function addCart (listingId, selectValue) {
                 let matchingItem; 
         
-            cart.forEach((item)=> { 
+            cart.forEach((item)=> {     
     if (listingId === item.listingId) {  
         matchingItem = item;
         
@@ -99,3 +99,31 @@ matchingItem.deliveryOptionsId = deliveryOptionsId;
 cartStorage(); 
 
 };
+
+
+export function updateQuantity (listingId, newQuantity) {
+
+let matchingItem;
+
+
+console.log('listing ID comes in:', listingId);
+console.log('cart:', cart);
+
+cart.forEach((cartItem) => {
+
+if (listingId === cartItem.listingId) {
+
+matchingItem = cartItem;
+
+}
+
+});
+
+console.log('matchingitem out:', matchingItem);
+
+
+matchingItem.quantity = newQuantity;  
+
+cartStorage();  
+
+}  

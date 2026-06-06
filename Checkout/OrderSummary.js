@@ -1,10 +1,13 @@
-    import { cart, RemoveFromCart, updateDeliveryDate} from "../cart.js"; 
+    import { cart, RemoveFromCart, updateDeliveryDate, updateQuantity} from "../cart.js"; 
     import dayjs from 'https://esm.sh/dayjs@1.11.10';
     import { deliveryOptions } from "../data-folder/delivery-options.js";
     import { getProduct } from "../data-folder/listingData.js";
     import { renderPaymentSummary } from "./PaymentSummary.js";
 
 const today =  dayjs();     
+
+console.log(today);
+
 const deliveryDate = today.add(7, 'days');
 console.log(deliveryDate.format('dddd, MMMM D'));
 
@@ -18,7 +21,7 @@ export function renderDate()  {
         const listingId = cartitem.listingId;  
 
          const matchinglisting = getProduct(listingId);
-        console.log(matchinglisting); 
+        console.log(matchinglisting);
 
         const deliveryOption = cartitem.deliveryOptionsId;
 
@@ -59,7 +62,8 @@ export function renderDate()  {
         js-product-quantity-${matchinglisting.id}
         ">  
             "${cartitem.quantity}" <span class="product-update">update</span> 
-        <span class="product-remove js-remove-link"  data-listing-id= "${matchinglisting.id}" >Delete</span>
+        <span class="product-remove js-remove-link"  data-listing-id="${matchinglisting.id}">Delete</span>
+        <input min="1" class="js-quantity-input remove-quantity-input" type="number" value="${cartitem.quantity}" data-listing-id="${matchinglisting.id}"></input>
         </div>
         </div>
 
@@ -117,17 +121,48 @@ export function renderDate()  {
     .forEach((link) => { 
         link.addEventListener('click', () => { 
         const listingId = link.dataset.listingId; 
-        
-        RemoveFromCart(listingId);   
 
-    const container = document.querySelector(
-            `.js-remove-container-${listingId}`
-            
-        ); 
- 
-        container.remove();
+const inputBox = document.querySelector(`.js-quantity-input[data-listing-id="${listingId}"]`);
 
-        });
+console.log('Inputbox found:', inputBox);
+console.log('inputBox value:', inputBox?.value);
+
+const removeAmount = parseInt(inputBox.value); 
+
+let matchingItem = ''; 
+
+const cartItem = cart.forEach((item) => { 
+
+    if (item.listingId === listingId) { 
+
+matchingItem = item 
+
+    };   
+
+});   
+
+const newQuantity = matchingItem.quantity - removeAmount;
+
+if (newQuantity <= 0) {
+
+    RemoveFromCart(listingId);     
+
+    const container = document.querySelector(  
+            `.js-remove-container-${listingId}`); 
+
+                    container.remove();   
+
+} 
+
+else {
+
+updateQuantity(listingId, newQuantity);
+
+ renderDate();
+  renderPaymentSummary();
+}
+
+        });  
 
     });   
 

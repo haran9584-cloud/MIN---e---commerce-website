@@ -163,6 +163,11 @@ body {
   font-weight: bold;
 }
 
+.remove-quantity-input {
+width: 30px;
+margin-top: 5px;
+
+}
 
 
 

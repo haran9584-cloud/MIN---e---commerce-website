@@ -94,7 +94,6 @@ document.querySelector(`.js-added-DOM-${listingId}`).innerHTML= ``;
    }  
 //getting quantity for this product  
 
-
  const selectElement = document.querySelector(`.js-quantity-listener-${listingId}`)
 
         const selectValue = Number(selectElement.value);
