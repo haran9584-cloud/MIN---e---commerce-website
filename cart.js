@@ -94,12 +94,11 @@ matchingItem = cartItem;
 }
  });
 
-matchingItem.deliveryOptionsId = deliveryOptionsId;
+matchingItem.deliveryOptionsId = deliveryOptionsId; 
 
 cartStorage(); 
 
 };
-
 
 export function updateQuantity (listingId, newQuantity) {
 
@@ -121,9 +120,27 @@ matchingItem = cartItem;
 
 console.log('matchingitem out:', matchingItem);
 
-
 matchingItem.quantity = newQuantity;  
 
 cartStorage();  
 
 }  
+
+export function addQuantity (listingId) {
+    
+                let matchingItem; 
+        
+            cart.forEach((item)=> {     
+    if (listingId === item.listingId) {  
+        matchingItem = item;
+        
+    }  
+
+    });  
+   
+    matchingItem.quantity += 1; 
+    
+//Setting the localstorage while adding the value in the cart.
+cartStorage();
+
+    };

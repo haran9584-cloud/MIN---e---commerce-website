@@ -84,7 +84,7 @@ document.querySelector('.js-order-summary')
 <button class="order-button"> 
     Place your order
 </button>
-        </div>  `
+        </div>`
 
 }); 
 

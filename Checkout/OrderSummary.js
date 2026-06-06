@@ -1,4 +1,4 @@
-    import { cart, RemoveFromCart, updateDeliveryDate, updateQuantity} from "../cart.js"; 
+    import { cart, RemoveFromCart, updateDeliveryDate, updateQuantity, addQuantity} from "../cart.js"; 
     import dayjs from 'https://esm.sh/dayjs@1.11.10';
     import { deliveryOptions } from "../data-folder/delivery-options.js";
     import { getProduct } from "../data-folder/listingData.js";
@@ -61,9 +61,9 @@ export function renderDate()  {
         <div class="product-quantity
         js-product-quantity-${matchinglisting.id}
         ">  
-            "${cartitem.quantity}" <span class="product-update">update</span> 
+            "${cartitem.quantity}" <span class="product-update js-quantity-update" data-product-id="${matchinglisting.id}">update</span> 
         <span class="product-remove js-remove-link"  data-listing-id="${matchinglisting.id}">Delete</span>
-        <input min="1" class="js-quantity-input remove-quantity-input" type="number" value="${cartitem.quantity}" data-listing-id="${matchinglisting.id}"></input>
+        <input min="1" class="js-quantity-input remove-quantity-input" type="number" value="1" data-listing-id="${matchinglisting.id}"></input>
         </div>
         </div>
 
@@ -152,7 +152,7 @@ if (newQuantity <= 0) {
 
                     container.remove();   
 
-} 
+}
 
 else {
 
@@ -164,13 +164,28 @@ updateQuantity(listingId, newQuantity);
 
         });  
 
-    });   
+    });
+    
+ document.querySelectorAll('.js-quantity-update').forEach((blink)=> {
 
-    let cartQuantity = 0; 
+    blink.addEventListener('click', ()=> {
+
+        const listingId = blink.dataset.productId;
+        
+    addQuantity(listingId);
+
+renderDate();
+                renderPaymentSummary();
+
+    });
+});
+
+ let cartQuantity = 0; 
         
         cart.forEach((item)=> {   
     cartQuantity += item.quantity;   
-        });  
+
+});
 
 document.querySelector('.js-checkout-quantity')
 .innerHTML = `Checkout (${cartQuantity} items)`;
